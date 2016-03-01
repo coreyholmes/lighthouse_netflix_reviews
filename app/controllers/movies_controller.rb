@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to movies_path
     else
-      erb :new
+      render :new
     end
   end
 
@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
     if @movie.update_attributes(movie_params)
       redirect_to movies_path
     else
-      erb :edit
+      render :edit
     end
   end
 

@@ -1,3 +1,14 @@
+<% if @movie.errors.any? %>
+  <div>
+    Oops, we found <%= pluralize(@movie.errors.count, "problem") %>:
+    <ul>
+      <% @movie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= link_to "Back to all movies", movies_path %>
 
 <h2>Submit a movie!</h2>
