@@ -14,13 +14,15 @@ class Movie < ActiveRecord::Base
   validates :description,
     presence: true
 
-  validates :poster_image_url,
+  validates :image,
     presence: true
 
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_past
+
+  mount_uploader :image, ImageUploader
 
   def review_average
     if reviews.size >= 1
@@ -34,7 +36,7 @@ class Movie < ActiveRecord::Base
 
   def release_date_is_in_the_past
     if release_date.present?
-      errors.add(:release_date, "should be in the past") if release_date > Date.today
+      errors.add(:release_date, "This Movie hasn't been release yet.\n Only movies that have been publicly released may be uploaded.") if release_date > Date.today
     end
   end
 

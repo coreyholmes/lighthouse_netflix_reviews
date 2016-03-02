@@ -17,15 +17,16 @@
 //= require_tree .
 
 $(document).ready(function(){
+
   $('.movie-slider').slick({
+    slidesToScroll: 4,
     // centerMode: true,
     centerHeight: '100px',
     centerPadding: '20px',
     arrows: true,
     infinite: true,
     slidesToShow: 7,
-    speed: 1000,
-    slidesToScroll: 6,
+    speed: 300,
     responsive: [
     {
       breakpoint: 768,
@@ -47,4 +48,10 @@ $(document).ready(function(){
     }
   ]
   });
+
+  // Movie Modal
+  $('#movie<%= movie.id %>').on('shown.bs.modal', function () {
+  })
+
+
 });

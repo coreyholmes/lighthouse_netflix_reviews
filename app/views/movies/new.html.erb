@@ -1,15 +1,23 @@
-<% if @movie.errors.any? %>
-  <div>
-    Oops, we found <%= pluralize(@movie.errors.count, "problem") %>:
-    <ul>
-      <% @movie.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<div class="row">
+  <div class="col-md-12">
+    <i class="fa fa-arrow-circle-left"></i> <%= link_to "Back to all movies", movies_path %>
+
+    <% if @movie.errors.any? %>
+      <div>
+        Oops, we found <%= pluralize(@movie.errors.count, "problem") %>:
+        <ul>
+          <% @movie.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
   </div>
-<% end %>
-
-<%= link_to "Back to all movies", movies_path %>
-
-<h2>Submit a movie!</h2>
-<%= render 'form' %>
+</div>
+<div class="row">
+  <div class="col-md-5">
+    <h2>Add Movie</h2>
+    <%= render 'form' %>
+  </div>
+</div>
