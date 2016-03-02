@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/"><%= image_tag "netflix.png", id: "logo" %></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+
+        <% if current_user %>
+        
+          <%= image_tag "user.png", id: "user-nav" %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="user-name"><%= current_user.full_name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Add Movie", new_movie_path %></li>
+            <li><%= link_to " Log out", session_path("current"), method: :delete %></li>
+          </ul>
+
+        <% else %>
+
+          <li><%= link_to "Log In", new_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_path %></li>
+
+        <% end %>
+
+        </ul>
+        <form class="navbar-form navbar-right">
+          <input type="text" class="form-control" placeholder="Search...">
+        </form>
+    </div>
+  </div>
+</nav>
+

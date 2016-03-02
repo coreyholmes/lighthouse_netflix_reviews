@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RottenPotatoes</title>
+  <title>Rotten Potatoes</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Slick -->
+  <link href="http://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet"/>
+  <link href="http://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
-<body>
+  <body>
 
-<%= yield %>
+      <%= render 'layouts/navbar' %>
 
-</body>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value) %>
+      <% end %>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+
+      <%= render 'layouts/footer' %>
+    
+    <!-- Slick -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+  </body>
 </html>

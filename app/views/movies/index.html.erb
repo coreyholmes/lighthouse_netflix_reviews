@@ -1,11 +1,26 @@
- <h1>Rotten Mangoes</h1>
-    <%= link_to "Submit a movie!", new_movie_path %>
-    <hr>
-    <% @movies.each do |movie| %>
-      <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <h3><%= movie.release_date %></h3>
-      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <p><%= movie.description %></p>
-      <hr>
-    <% end %>
+<!-- <div class="container">
+<div class="row">
+  <h3>Action</h3>
+  <hr>    
+  </div>
+  </div> -->
+<div class="movie-slider">
+  <% @movies.each do |movie| %>
+    <div>
+      <div class="fade">
+        <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+        <span class="index-movie-title"><%= truncate(movie.title, length: 20) %></span>
+        <%= year(movie.release_date) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%#= link_to movie.title, movie_path(movie) %>
+<%#= format_date(movie.release_date) %>
+<%#= movie.review_average %>
+<%#= movie.director %> 
+<%#= movie.runtime_in_minutes %>
+<%#= movie.description %>
+
+

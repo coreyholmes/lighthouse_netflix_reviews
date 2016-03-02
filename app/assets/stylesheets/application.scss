@@ -1,0 +1,142 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ 
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*
+*= require_self
+*/
+
+$darkgrey: #181818;
+$stars: #f1c40f;
+$red: #e21221;
+
+/* *********** Main *********** */
+
+
+body {
+  background-color: $darkgrey;
+  margin-top: 60px;
+}
+
+img {
+  max-height: 200px;
+}
+
+.movie-slider {
+  background-color: $darkgrey;
+  height: auto;
+  padding: 15px;
+}
+
+/* *********** Navbar *********** */
+
+#logo {
+  height: 70px;
+  width: auto;
+  margin-top: -15px;
+  margin-left: -8px;
+}
+
+.nav-links {
+  color: white;
+  top: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  &:hover {
+  color: white;
+  text-decoration: none;
+  }
+  &:focus {
+  color: white;
+  text-decoration: none;
+  }
+}
+
+.form-control {
+  border-radius: 20px;
+}
+
+#user-nav {
+  margin-right: 10px;
+  border-radius: 100%;
+}
+
+#user-name {
+  padding-right: 15px;
+}
+
+.navbar-nav li {
+  margin-top: 5px;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.nav-links a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-default {
+  top: 0;
+  border-radius: 0;
+  border: none;
+  background-color: $darkgrey;
+  height: 60px;
+  padding-top: 10px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: white;
+}
+
+.fade
+{
+  opacity:0.5;
+}
+
+.fade:hover
+{
+  opacity:1;
+}
+
+/* *********** Footer *********** */
+
+footer {
+  background-color: $darkgrey;
+  height: 100px;
+  padding: 25px 0;
+}
+
+/* *********** Index *********** */
+
+.index-movie-title {
+  color: white;
+  font-weight: 1.5;
+}
+/* *********** Section *********** */

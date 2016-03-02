@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_path
+      redirect_to movies_path, notice: "#{@movie.title} was successfully added!"
     else
       render :new
     end
@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
   # --------------------------------------
 
   def show # GET
-
+    # GET's @movie by ID, as set in before_action
   end
 
   # --------------------------------------
@@ -37,12 +37,12 @@ class MoviesController < ApplicationController
   # --------------------------------------
   
   def edit #GET
-
+    # GET's @movie by ID, as set in before_action
   end
 
   def update # PUT / PATCH
     if @movie.update_attributes(movie_params)
-      redirect_to movies_path
+      redirect_to movies_path, notice: "#{@movie.title} was updated successfully."
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class MoviesController < ApplicationController
   
   def destroy # DELETE
     @movie.destroy
-    redirect_to movies_path
+    redirect_to movies_path, notice: "#{@movie.title} has been removed."
   end
 
   # --------------------------------------
