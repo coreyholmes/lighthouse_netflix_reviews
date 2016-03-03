@@ -27,10 +27,10 @@ class Admin::UsersController < ApplicationController
   end
 
    def update # PUT / PATCH
-    if @user.update_attributes(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       redirect_to admin_users_path, notice: "#{@user.full_name} was updated successfully."
     else
-      # redirect_to root_path
       render :'admin/users/:id/edit'
     end
   end
@@ -46,6 +46,10 @@ class Admin::UsersController < ApplicationController
       end
     end
     @admins.count
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :firstname, :lastname, :is_admin)
   end
 
 

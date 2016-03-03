@@ -18,6 +18,7 @@ gem 'faker'
 # Pagination
 gem 'kaminari'
 
+gem 'byebug'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 # Use jquery as the JavaScript library

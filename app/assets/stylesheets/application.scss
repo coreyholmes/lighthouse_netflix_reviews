@@ -96,6 +96,10 @@ a {
   }
 }
 
+.label-success {
+  background-color: $green;
+}
+
 .btn {
   border-radius: 4px;
   padding-left: 25px;
@@ -111,6 +115,11 @@ a {
   background: none;
   color: $red;
   border: 1px solid $red;
+  &:focus {
+  background: none;
+  color: $red;
+  border: 1px solid $red;
+  }
   }
 }
 
@@ -317,12 +326,12 @@ footer {
 
 .fade
 {
-  opacity:0.5;
+  opacity: 0.7;
 }
 
 .fade:hover
 {
-  opacity:1;
+  opacity: 1;
 }
 
 /* *********** Admin *********** */
