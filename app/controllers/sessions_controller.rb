@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    
   end
 
   def create
@@ -10,14 +11,14 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     else
-      flash.now[:alert] = "Log in failed..."
+      flash.now[:alert] = "Login failed..."
       render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to movies_path, notice: "See ya!"
+    redirect_to new_session_path, notice: "You've Successfully Logged Out"
   end
 
 end

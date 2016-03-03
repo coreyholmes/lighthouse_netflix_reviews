@@ -11,14 +11,14 @@ class MoviesController < ApplicationController
   # --------------------------------------
 
   def new # GET
+    @category_options = Movie.categories
     @movie = Movie.new
   end
 
   def create # POST
+    @category_options = Movie.categories
     @movie = Movie.new(movie_params)
-
     @movie.image = movie_params[:image]
-
     if @movie.save
       redirect_to movies_path, notice: "Successfully added #{@movie.title}."
     else
@@ -65,7 +65,7 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :image, :description
+      :title, :release_date, :director, :runtime_in_minutes, :category, :image, :description
     )
   end
 

@@ -1,12 +1,48 @@
-<h1>Log In</h1>
-<%= form_tag sessions_path do %>
-  <div>
-    <%= label_tag :email %><br/>
-    <%= text_field_tag :email %>
+<style>
+  body {
+    background: url('/assets/movie-wallpaper.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-4"></div>
+    <div id="login" class="col-md-4">
+
+    <h3 class="center white">LOGIN</h3>
+    <hr>
+
+    <%= form_tag sessions_path do %>
+      
+      <div class="col-sm-12">
+        <div class="form-group">
+          <div>
+            <%= label_tag :email %><br/>
+            <%= text_field_tag :email, "", class: "form-control"  %>
+          </div>
+        </div>
+      </div>
+      
+     <div class="col-sm-12">
+        <div class="form-group">
+          <div>
+            <%= label_tag :password %><br/>
+            <%= password_field_tag :password, "", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="center">
+        <br><br><div><%= submit_tag "Log In", class: "btn btn-danger btn-lg"  %></div>
+      </div>
+      
+    <% end %>
+    
+  <div class="col-md-4"></div>
   </div>
-  <div>
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %>
-  </div>
-  <div><%= submit_tag "Log In" %></div>
-<% end %>
+</div>
+
+
+
+
+

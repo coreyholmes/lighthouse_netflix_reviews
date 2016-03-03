@@ -1,5 +1,7 @@
 class Movie < ActiveRecord::Base
 
+  CATEGORY_OPTIONS = ['action', 'adventure', 'sci-fi', 'drama', 'romance', 'thriller', 'horror', 'comedy']
+
   has_many :reviews
   
   validates :title,
@@ -17,12 +19,19 @@ class Movie < ActiveRecord::Base
   validates :image,
     presence: true
 
+  validates :category,
+    presence: true
+
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_past
 
   mount_uploader :image, ImageUploader
+
+  def self.categories
+    CATEGORY_OPTIONS
+  end
 
   def review_average
     if reviews.size >= 1

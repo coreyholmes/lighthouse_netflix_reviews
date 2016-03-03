@@ -1,7 +1,9 @@
+<ol class="breadcrumb">
+  <li><i class="fa fa-arrow-circle-left"></i> <%= link_to "Back to all movies", movies_path %></li>
+</ol>
+
 <div class="row">
   <div class="col-md-12">
-    <i class="fa fa-arrow-circle-left"></i> <%= link_to "Back to all movies", movies_path %>
-
     <% if @movie.errors.any? %>
       <div>
         Oops, we found <%= pluralize(@movie.errors.count, "problem") %>:
@@ -12,12 +14,12 @@
         </ul>
       </div>
     <% end %>
-
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-5">
-    <h2>Add Movie</h2>
+    <!-- <h2>Add Movie</h2> -->
     <%= render 'form' %>
   </div>
 </div>

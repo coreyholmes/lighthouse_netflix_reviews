@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  
-  has_many :reviews
-  
+    
   def new
     @user = User.new
   end
@@ -11,8 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id # Automatic login upon registering
-      redirect_to movies_path, notice: "Hey #{@user.firstname}! Welcome to Rotten Potatoes!"
-
+      redirect_to movies_path, notice: "Hey #{@user.firstname}! Welcome to Netflix Reviews!"
     else
       render :new
     end

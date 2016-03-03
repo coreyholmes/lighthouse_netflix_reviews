@@ -3,7 +3,7 @@
 <head>
   <title>Netflix Reviews</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <!-- Slick -->
   <link href="http://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet"/>
@@ -18,13 +18,20 @@
       <%= render 'layouts/navbar' %>
 
       <div class="container">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value) %>
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
       <% end %>
+
         <%= yield %>
+        
       </div>
       
       <%= render 'layouts/footer' %>
-    
+
   </body>
 </html>

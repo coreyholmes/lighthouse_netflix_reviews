@@ -22,8 +22,11 @@
 */
 
 $darkgrey: #181818;
+$grey: #333;
 $stars: #f1c40f;
 $red: #e21221;
+$green: #09c33c;
+
 
 /* *********** Main *********** */
 
@@ -31,6 +34,37 @@ $red: #e21221;
 body {
   background-color: $darkgrey;
   margin-top: 70px;
+}
+
+.alert {
+  margin-top: 10px;
+}
+
+.alert-success {
+  border: none;
+  border-radius: 0;
+  background-color: $green;
+  padding: 10px;
+  color: white;
+}
+
+.alert-danger {
+  border: none;
+  border-radius: 0;
+  background-color: $red;
+  padding: 10px;
+  color: white;
+}
+
+.alert button {
+  margin-top: -3px;
+}
+
+.breadcrumb {
+  margin-top: 15px;
+  border-radius: 0;
+  background: none;
+  padding-left: 0;
 }
 
 .movie-slider img {
@@ -57,13 +91,15 @@ a {
   color: $red;
   text-decoration: none;
   &:hover {
-  color: #333;
+  color: $grey;
   text-decoration: none;
   }
 }
 
 .btn {
   border-radius: 4px;
+  padding-left: 25px;
+  padding-right: 25px;
   border: none;
 }
 
@@ -81,6 +117,19 @@ a {
 .modal-btns {
   margin-top: 40px; 
 }
+
+.center {
+  text-align: center;
+}
+
+.white {
+  color: white;
+}
+
+.right {
+  float: right;
+}
+
 /* *********** Navbar *********** */
 
 #logo {
@@ -126,8 +175,9 @@ nav a {
 
 .form-control:focus {
   border: 1px solid $red;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: none;
+   /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);*/
   }
 
 .navbar-nav a {
@@ -174,7 +224,7 @@ nav a {
   color: white;
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:hover {
   color: white;
 }
 
@@ -185,26 +235,26 @@ nav a {
 .dropdown-menu {
   background-color: $darkgrey;
   border-radius: 0;
-  margin-top: -1px;
 }
 
 .dropdown-menu li {
   text-align: right;
+  padding: 5px 0;
 }
 
 /* *********** Footer *********** */
 
 footer {
   background-color: $darkgrey;
-  height: 100px;
-  padding: 25px 0;
+  height: auto;
+  padding: 20px 0 10px 0;
 }
 
 /* *********** Index *********** */
 
 .index-category-first {
   background: $darkgrey;
-  color: #333;
+  color: $grey;
   margin-top: -18px;
   width: auto;
   height: auto;
@@ -221,7 +271,7 @@ footer {
 
 .index-category {
   background: $darkgrey;
-  color: #333;
+  color: $grey;
   margin-top: -43px;
   width: auto;
   height: auto;
@@ -237,14 +287,14 @@ footer {
 
 .divider-top {
   border: none;
-  border-bottom: 5px solid #333;
+  border-bottom: 5px solid $grey;
   margin-top: -25px;
   margin-bottom: 15px;
 }
 
 /*.divider-bottom {
   border: none;
-  border-top: 5px solid #333;
+  border-top: 5px solid $grey;
   margin-top: -30px;
   margin-bottom: 4px;
 }*/
@@ -274,3 +324,49 @@ footer {
 {
   opacity:1;
 }
+
+/* *********** Admin *********** */
+
+.panel {
+  border-radius: 0;
+  background: $darkgrey;
+  border-color: $grey;
+  border-right: none;
+  border-left: none;
+  color: white;
+  border-top: none;
+  box-shadow: none;
+}
+
+.panel .panel-heading {
+  background-color: $grey;
+  color: white;
+  border-radius: 0;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  border-bottom: 3px solid $grey;
+  border-top: none;
+}
+
+/* *********** Signup / Login*********** */
+
+#signup {
+  background: rgba(13, 13, 13, 0.9);
+  padding: 20px;
+  margin: 45px 0;
+}
+
+#login {
+  background: rgba(13, 13, 13, 0.9);
+  padding: 20px;
+  margin: 100px 0 130px 0;
+}
+
+
+
+
+
+
+
+
