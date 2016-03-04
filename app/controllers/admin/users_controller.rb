@@ -3,13 +3,13 @@ class Admin::UsersController < ApplicationController
   def index
     if current_user.is_admin
       @users = User.order(:id).page params[:page]
+      @movies = Movie.all
     else
       redirect_to root_path
     end
     @admin_count = admin_count
   end
 
-  # Destroy a User
   def destroy
     if current_user.is_admin
       @user = User.find(params[:id])
@@ -21,12 +21,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # Edit a User
   def edit
     @user = User.find(params[:id])
   end
 
-   def update # PUT / PATCH
+   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "#{@user.full_name} was updated successfully."

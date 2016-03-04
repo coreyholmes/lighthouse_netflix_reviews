@@ -3,7 +3,22 @@ class MoviesController < ApplicationController
   before_action :set_movie, except: [:index, :new, :create]
 
   def index # GET
+    restrict_access
     @movies = Movie.all
+    if params[:search]
+      @search_results = search(params[:search])
+    end
+  end
+
+  def search(param)
+    @search_results = Movie.search(param)
+    if @search_results.present?
+      redirect_to root_path, notice: "Success! We found results including '#{param}'"
+      @search_results
+    else
+      redirect_to root_path, notice: "No Search Results Found"
+       @search_results
+    end
   end
 
   # --------------------------------------
@@ -61,6 +76,7 @@ class MoviesController < ApplicationController
 
   # --------------------------------------
 
+
    protected
 
   def movie_params
@@ -72,6 +88,5 @@ class MoviesController < ApplicationController
   def set_movie
     @movie = Movie.find(params[:id])
   end
-
 
 end

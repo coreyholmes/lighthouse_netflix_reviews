@@ -3,7 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :movie
 
   validates :user,
-        presence: true
+    presence: true
 
   validates :movie,
     presence: true
@@ -19,4 +19,5 @@ class Review < ActiveRecord::Base
     
   validates :rating_out_of_ten,
     numericality: { less_than_or_equal_to: 10 }
+
 end

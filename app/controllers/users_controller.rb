@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id # Automatic login upon registering
+      UserMailer.welcome_email(@user).deliver
       redirect_to movies_path, notice: "Hey #{@user.firstname}! Welcome to Netflix Reviews!"
     else
       render :new

@@ -23,13 +23,17 @@
 
 $darkgrey: #181818;
 $grey: #333;
-$stars: #f1c40f;
+$star: #f1c40f;
 $red: #e21221;
 $green: #09c33c;
 
 
 /* *********** Main *********** */
 
+nav .round-btn {
+  border-radius: 20px !important;
+  line-height: 1;
+}
 
 body {
   background-color: $darkgrey;
@@ -122,7 +126,9 @@ a {
   }
   }
 }
-
+.star {
+  color: $star;
+}
 .modal-btns {
   margin-top: 40px; 
 }

@@ -3,6 +3,31 @@
   <p class="white right">User Count: <span class="badge"><%= User.all.count %></span> Admin Access: <span class="badge"><%= @admin_count %></span></p>
 </ol>
 
+
+<div class="panel panel-default">
+  <table class="table">
+    <th>Movie ID</th>
+    <th>Title</th>
+    <th>Director</th>
+    <th>Runtime</th>
+    <th>Uploaded</th>
+    <th>Category</th>
+    
+    <% @movies.each do |movie| %>
+    <tr>
+    <td><%= movie.id %></td>
+    <td><%= movie.title %></td>
+    <td><%= movie.director %></td>
+    <td><%= movie.runtime_in_minutes %></td>
+    <td><%= movie.created_at.strftime('%B %Y') %></td>
+    <td><%= movie.category %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<br><br><br><br>
+
 <div class="panel panel-default">
   <table class="table">
     <th>User ID</th>

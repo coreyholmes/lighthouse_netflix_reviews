@@ -33,12 +33,13 @@ class Movie < ActiveRecord::Base
     CATEGORY_OPTIONS
   end
 
-  def review_average
-    if reviews.size >= 1
-      reviews.sum(:rating_out_of_ten) / reviews.size + " / 10"
-    else
-      "No Reviews"
-    end
+
+  def movie_rating
+    reviews.sum(:rating_out_of_ten) / (reviews.size.nonzero? || 1)
+  end
+
+  def self.search(query)
+    where("title like ?", "%#{query}%")
   end
 
   protected
