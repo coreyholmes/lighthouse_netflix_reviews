@@ -3,41 +3,40 @@
     <div class="navbar-header" data-no-turbolink="true">
       <a href="/"><%= image_tag "netflix.png", id: "logo" %></a>
     </div>
-    <!-- <div id="navbar" class="navbar-collapse collapse"> -->
-        <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
 
-        <% if current_user %>
+    <% if current_user %>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.full_name %> <span class="caret"></span></a>
-          <ul class="dropdown-menu" data-no-turbolink="true">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Add Movie", new_movie_path %></li>
-            <li><%= link_to " Log out", session_path("current"), method: :delete %></li>
-          <% if current_user.is_admin %>
-            <li><%= link_to "Admin Access", admin_users_path %></li>
-          <% end %>
-          </ul>
-        </li>     
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.full_name %> <span class="caret"></span></a>
+      <ul class="dropdown-menu" data-no-turbolink="true">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Add Movie", new_movie_path %></li>
+        <li><%= link_to " Log out", session_path("current"), method: :delete %></li>
+      <% if current_user.is_admin %>
+        <li><%= link_to "Admin Access", admin_users_path %></li>
+      <% end %>
+      </ul>
+    </li>     
 
-        <% else %>
+    <% else %>
 
-          <li><%= link_to "Log In", new_session_path %></li>    
-          <li><%= link_to "Sign Up", new_user_path %></li>
+      <li><%= link_to "Log In", new_session_path %></li>    
+      <li><%= link_to "Sign Up", new_user_path %></li>
 
-        <% end %>
+    <% end %>
 
-        </ul>
-        <% if current_user %>
-            <%= form_tag('/movies/search', method: "get", class: "navbar-form navbar-right") do %>
-              <div class="form-group">
-                <div>
-                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Movie Titles..." %>
-                  <%= submit_tag "Search", class: "btn btn-danger btn-sm round-btn" %>
-                </div>
-            </div>
-            <% end %>
-        <% end %>
+    </ul>
+    <% if current_user %>
+      <%= form_tag('/movies/search', method: "get", class: "navbar-form navbar-right") do %>
+        <div class="form-group">
+          <div>
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Movies..." %>
+            <%= submit_tag "Search", class: "btn btn-danger btn-sm round-btn" %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
   </div>
 </nav>
 

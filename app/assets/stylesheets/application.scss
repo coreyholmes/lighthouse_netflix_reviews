@@ -298,6 +298,9 @@ footer {
 .index-category h3 {
   line-height: 0;
   margin-top: 0;
+  &:hover {
+  color: $red;
+  }
 }
 
 .divider-top {

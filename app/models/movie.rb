@@ -38,8 +38,8 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten) / (reviews.size.nonzero? || 1)
   end
 
-  def self.search(query)
-    where("title like ?", "%#{query}%")
+  def self.search(search)
+    where("title LIKE ? OR director LIKE ? OR description LIKE ?", "%#{search}%","%#{search}%", "%#{search}%")
   end
 
   protected

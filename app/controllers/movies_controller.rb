@@ -9,13 +9,18 @@ class MoviesController < ApplicationController
 
   def search
     @movies = Movie.search(params[:search])
+    @search = true
     if @movies.present?
+      #redirect_to movies_search_path
       render :index, notice: "Success! We found results including '#{params}'"
     else
-      
       redirect_to root_path
       flash.now[:alert] = "No Search Results Found"
     end
+  end
+
+  def results
+
   end
 
   # --------------------------------------

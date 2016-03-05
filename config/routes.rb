@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get 'reviews/create'
 
   get 'movies/search' => 'movies#search'
-
+  
   resources :movies do
     resources :reviews, only: [:new, :create]
   end
   resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
 
   namespace :admin do
     resources :users, only: [:index, :destroy, :edit, :update]

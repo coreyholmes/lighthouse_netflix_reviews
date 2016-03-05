@@ -1,97 +1,122 @@
 <div class="index-wrapper">
 
-<% Movie.categories.each do |category| %>
-<div class="index-category"><h3>[ <%= category.capitalize %> ]</h3></div>
-<hr class="divider-top">  
-  <div class="movie-slider">
-    <% @movies.each do |movie| %>
-      <% if movie.category == "#{category}" %>
-        <div>
-          <div class="fade">
-            <a data-toggle="modal" data-target="#movie<%= movie.id %>"><%= image_tag(movie.image.to_s) %></a>
-            <span class="index-movie-title"><%= truncate(movie.title, length: 20) %></span><br>
-            <%= year(movie.release_date) %>
+<% if @search != true %> 
+
+  <% Movie.categories.each do |category| %>
+  <div class="index-category"><h3>[ <%= category.capitalize %> ]</h3></div>
+  <hr class="divider-top"> 
+    <div class="movie-slider">
+      <% @movies.each do |movie| %>
+        <% if movie.category == "#{category}" %>
+          <div>
+            <div class="fade">
+              <a data-toggle="modal" data-target="#movie<%= movie.id %>"><%= image_tag(movie.image.to_s) %></a>
+              <span class="index-movie-title"><%= truncate(movie.title, length: 20) %></span><br>
+              <%= year(movie.release_date) %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+
+<% else %>
+
+    <div class="index-category"><h3>[ Search Results ]</h3></div>
+    <hr class="divider-top"> 
+    <div class="movie-slider">
+      <% @movies.each do |movie| %>
+          <div>
+            <div class="fade">
+              <a data-toggle="modal" data-target="#movie<%= movie.id %>"><%= image_tag(movie.image.to_s) %></a>
+              <span class="index-movie-title"><%= truncate(movie.title, length: 20) %></span><br>
+              <%= year(movie.release_date) %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
 <% end %>
 
-<!-- Modal -->
-<% @movies.each do |movie| %>
-  <div class="modal fade" id="movie<%= movie.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-6">
-            <%= image_tag(movie.image.to_s) %>
-            </div>
-            <div class="col-sm-6">
-              <span class="white">
-              <h3><%= movie.title %></h3>
-              <p><strong>Directed by:</strong> <%= movie.director %><br>
-              <strong>Length:</strong> <%= movie.runtime_in_minutes %> minutes<br></p></span>
 
-              <% movie.movie_rating.times do %>
-                <span class="star"><i class="fa fa-star"></i></span>
-              <% end %>
-                  
-              <hr>
-              <%= movie.description %>
-              <br><br>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-sm-12">
-              <hr>
-              <h3 class="white">Leave a Review</h3>
-                <% @review = movie.reviews.build %>
-                <%= form_for([movie, @review]) do |f| %>
-                  <% if @review.errors.any? %>
-                    <div>
-                      <%= pluralize(@review.errors.count, "error") %> prevented the review from being saved:
-                      <ul>
-                        <% @review.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                  <% end %>
-                <div class="row">
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <div>
-                      <%= f.number_field :rating_out_of_ten, class: "form-control", placeholder: "Rating [0 - 10]" %>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6"></div>
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <div>
-                      <%= f.text_area "text", class: "form-control", placeholder: "Review" %>
-                    </div>
-                  </div>
-                </div>
-                </div>
-                <div>
-                  <%= f.submit "Submit", class: "btn btn-danger" %>
-                </div>
+
+
+
+
+
+  <!-- Modal -->
+  <% @movies.each do |movie| %>
+    <div class="modal fade" id="movie<%= movie.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <%= image_tag(movie.image.to_s) %>
+              </div>
+              <div class="col-sm-6">
+                <span class="white">
+                <h3><%= movie.title %></h3>
+                <p><strong>Directed by:</strong> <%= movie.director %><br>
+                <strong>Length:</strong> <%= movie.runtime_in_minutes %> minutes<br></p></span>
+
+                <% movie.movie_rating.times do %>
+                  <span class="star"><i class="fa fa-star"></i></span>
                 <% end %>
+                    
+                <hr>
+                <%= movie.description %>
+                <br><br>
               </div>
             </div>
-            <% movie.reviews.each do |review| %>
-              <hr>
-              <%= review.text %>
-            <% end %>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <hr>
+                <h3 class="white">Leave a Review</h3>
+                  <% @review = movie.reviews.build %>
+                  <%= form_for([movie, @review]) do |f| %>
+                    <% if @review.errors.any? %>
+                      <div>
+                        <%= pluralize(@review.errors.count, "error") %> prevented the review from being saved:
+                        <ul>
+                          <% @review.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                  <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <div>
+                        <%= f.number_field :rating_out_of_ten, class: "form-control", placeholder: "Rating [0 - 10]" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6"></div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <div>
+                        <%= f.text_area "text", class: "form-control", placeholder: "Review" %>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div>
+                    <%= f.submit "Submit", class: "btn btn-danger" %>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+              <% movie.reviews.each do |review| %>
+                <hr>
+                <%= review.text %>
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
-
-
-</div>
+  <% end %>
+</div> <!-- /index-wrapper -->
