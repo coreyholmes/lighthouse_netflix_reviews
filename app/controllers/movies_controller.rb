@@ -1,23 +1,20 @@
 class MoviesController < ApplicationController
   
-  before_action :set_movie, except: [:index, :new, :create]
+  before_action :set_movie, except: [:index, :new, :create, :search]
 
   def index # GET
     restrict_access
     @movies = Movie.all
-    if params[:search]
-      @search_results = search(params[:search])
-    end
   end
 
-  def search(param)
-    @search_results = Movie.search(param)
-    if @search_results.present?
-      redirect_to root_path, notice: "Success! We found results including '#{param}'"
-      @search_results
+  def search
+    @movies = Movie.search(params[:search])
+    if @movies.present?
+      render :index, notice: "Success! We found results including '#{params}'"
     else
-      redirect_to root_path, notice: "No Search Results Found"
-       @search_results
+      
+      redirect_to root_path
+      flash.now[:alert] = "No Search Results Found"
     end
   end
 

@@ -29,22 +29,15 @@
 
         </ul>
         <% if current_user %>
-          <form class="navbar-form navbar-right">        
-            <%= form_tag("/movies", method: "get") do %>
-            <!-- <div class="col-sm-6"> -->
+            <%= form_tag('/movies/search', method: "get", class: "navbar-form navbar-right") do %>
               <div class="form-group">
                 <div>
-                <span class="inline">
-                  <%= text_field_tag :search, params[:search] %>
+                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Movie Titles..." %>
                   <%= submit_tag "Search", class: "btn btn-danger btn-sm round-btn" %>
-                  </span>
                 </div>
-              <!-- </div> -->
             </div>
             <% end %>
-          </form>
         <% end %>
-    <!-- </div> -->
   </div>
 </nav>
 

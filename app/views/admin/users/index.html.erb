@@ -1,6 +1,6 @@
 <ol class="breadcrumb" data-no-turbolink="true">
   <li><i class="fa fa-arrow-circle-left"></i> <%= link_to "Go Home", root_path %></li>
-  <p class="white right">User Count: <span class="badge"><%= User.all.count %></span> Admin Access: <span class="badge"><%= @admin_count %></span></p>
+  <p class="white right">Movie Count: <span class="badge"><%= Movie.all.count %></span></p>
 </ol>
 
 
@@ -26,7 +26,14 @@
   </table>
 </div>
 
-<br><br><br><br>
+<span class="right"><%= paginate @movies %></span>
+<div class="clearfix"></div>
+<hr>
+
+<ol class="breadcrumb" data-no-turbolink="true">
+  <li><i class="fa fa-arrow-circle-left"></i> <%= link_to "Go Home", root_path %></li>
+  <p class="white right">User Count: <span class="badge"><%= User.all.count %></span> Admin Access: <span class="badge"><%= @admin_count %></span></p>
+</ol>
 
 <div class="panel panel-default">
   <table class="table">

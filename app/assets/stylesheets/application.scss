@@ -32,7 +32,7 @@ $green: #09c33c;
 
 nav .round-btn {
   border-radius: 20px !important;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 body {
@@ -307,12 +307,12 @@ footer {
   margin-bottom: 15px;
 }
 
-/*.divider-bottom {
+.divider-bottom {
   border: none;
   border-top: 5px solid $grey;
   margin-top: -30px;
   margin-bottom: 4px;
-}*/
+}
 
 .index-movie-title {
   color: white;
@@ -327,7 +327,7 @@ footer {
 }
 
 .index-wrapper {
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 .fade

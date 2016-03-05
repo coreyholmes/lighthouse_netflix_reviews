@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   def index
     if current_user.is_admin
       @users = User.order(:id).page params[:page]
-      @movies = Movie.all
+      @movies = Movie.all.order(:id).page params[:page]
     else
       redirect_to root_path
     end
